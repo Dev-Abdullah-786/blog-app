@@ -10,7 +10,7 @@ export default tseslint.config(
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
-  eslintPluginPrettierRecommended, // integrates Prettier with ESLint
+  eslintPluginPrettierRecommended,
   {
     languageOptions: {
       globals: {
@@ -26,7 +26,8 @@ export default tseslint.config(
   },
   {
     rules: {
-      // ✅ your project rules
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',

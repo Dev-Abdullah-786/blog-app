@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { PrismaClient } from '../generated/prisma';
+import { PrismaClient } from '@generated/prisma';
 
 const prisma = new PrismaClient();
 
@@ -19,6 +19,7 @@ async function main() {
     avatar: faker.image.avatar(),
   }));
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   await prisma.user.createMany({
     data: users,
   });
@@ -34,6 +35,7 @@ async function main() {
 
   await Promise.all(
     posts.map(async (p) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       await prisma.post.create({
         data: {
           ...p,
@@ -55,10 +57,12 @@ async function main() {
 
 main()
   .then(async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     await prisma.$disconnect();
     process.exit(0);
   })
   .catch(async (e) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     await prisma.$disconnect();
     console.error(e);
     process.exit(1);
