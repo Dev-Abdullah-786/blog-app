@@ -1,0 +1,40 @@
+
+> apps@0.1.0 build
+> next build --turbopack
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of D:\My Projects\blog-app\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * D:\My Projects\blog-app\apps\frontend\package-lock.json
+
+   ▲ Next.js 15.5.2 (Turbopack)
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - No utility classes were detected in your source files. If this is unexpected, double-check the `content` option in your Tailwind CSS configuration.
+[1m[33mwarn[39m[22m - https://tailwindcss.com/docs/content-configuration
+ ✓ Finished writing to disk in 162ms
+ ✓ Compiled successfully in 13.7s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/5) ...
+   Generating static pages (1/5) 
+   Generating static pages (2/5) 
+   Generating static pages (3/5) 
+ ✓ Generating static pages (5/5)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                         Size  First Load JS
+┌ ○ /                            5.41 kB         119 kB
+└ ○ /_not-found                      0 B         113 kB
++ First Load JS shared by all     115 kB
+  ├ chunks/89b13ce4c4492ffe.js   20.4 kB
+  ├ chunks/c4a13456324d9360.js   75.3 kB
+  └ other shared chunks (total)  19.7 kB
+
+
+○  (Static)  prerendered as static content
+
