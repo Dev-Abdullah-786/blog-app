@@ -7,6 +7,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { PostModule } from './post/post.module';
 import { UserModule } from './user/user.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UserModule } from './user/user.module';
     PrismaModule,
     PostModule,
     UserModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
