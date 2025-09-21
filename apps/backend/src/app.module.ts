@@ -8,6 +8,8 @@ import { join } from 'path';
 import { PostModule } from './post/post.module';
 import { UserModule } from './user/user.module';
 import { CommentModule } from './comment/comment.module';
+import { TagModule } from './tag/tag.module';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { CommentModule } from './comment/comment.module';
     PostModule,
     UserModule,
     CommentModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService],
