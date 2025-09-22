@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { CommentModule } from './comment/comment.module';
 import { TagModule } from './tag/tag.module';
 import { TagModule } from './tag/tag.module';
+import { LikeModule } from './like/like.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { TagModule } from './tag/tag.module';
     UserModule,
     CommentModule,
     TagModule,
+    LikeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
