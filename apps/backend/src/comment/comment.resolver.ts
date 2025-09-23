@@ -1,31 +1,31 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { CommentService } from './comment.service';
-import { Comment } from './entities/comment.entity';
+import { CommentEntity } from './entities/comment.entity';
 import { CreateCommentInput } from './dto/create-comment.input';
 import { UpdateCommentInput } from './dto/update-comment.input';
 
-@Resolver(() => Comment)
+@Resolver(() => CommentEntity)
 export class CommentResolver {
   constructor(private readonly commentService: CommentService) {}
 
-  @Mutation(() => Comment)
+  @Mutation(() => CommentEntity)
   createComment(
     @Args('createCommentInput') createCommentInput: CreateCommentInput,
   ) {
     return this.commentService.create(createCommentInput);
   }
 
-  @Query(() => [Comment], { name: 'comment' })
+  @Query(() => [CommentEntity], { name: 'comment' })
   findAll() {
     return this.commentService.findAll();
   }
 
-  @Query(() => Comment, { name: 'comment' })
+  @Query(() => CommentEntity, { name: 'comment' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.commentService.findOne(id);
   }
 
-  @Mutation(() => Comment)
+  @Mutation(() => CommentEntity)
   updateComment(
     @Args('updateCommentInput') updateCommentInput: UpdateCommentInput,
   ) {
@@ -35,7 +35,7 @@ export class CommentResolver {
     );
   }
 
-  @Mutation(() => Comment)
+  @Mutation(() => CommentEntity)
   removeComment(@Args('id', { type: () => Int }) id: number) {
     return this.commentService.remove(id);
   }
