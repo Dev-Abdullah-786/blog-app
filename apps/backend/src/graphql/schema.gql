@@ -78,34 +78,46 @@ type Mutation {
 }
 
 input CreateUserInput {
-  """Example field (placeholder)"""
+  """
+  Example field (placeholder)
+  """
   exampleField: Int!
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
+  """
+  Example field (placeholder)
+  """
   exampleField: Int
   id: Int!
 }
 
 input CreateCommentInput {
-  """Example field (placeholder)"""
+  """
+  Example field (placeholder)
+  """
   exampleField: Int!
 }
 
 input UpdateCommentInput {
-  """Example field (placeholder)"""
+  """
+  Example field (placeholder)
+  """
   exampleField: Int
   id: Int!
 }
 
 input CreateLikeInput {
-  """Example field (placeholder)"""
+  """
+  Example field (placeholder)
+  """
   exampleField: Int!
 }
 
 input UpdateLikeInput {
-  """Example field (placeholder)"""
+  """
+  Example field (placeholder)
+  """
   exampleField: Int
   id: Int!
 }
