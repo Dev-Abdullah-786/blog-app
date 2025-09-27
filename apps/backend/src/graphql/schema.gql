@@ -51,73 +51,18 @@ type Post {
   _count: Count!
 }
 
-type Like {
-  id: Int!
-  user: User!
-  post: Post!
-  createAt: DateTime!
-}
-
 type Query {
   posts: [Post!]!
-  user(id: Int!): User!
-  comment(id: Int!): CommentEntity!
-  like(id: Int!): Like!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
-  createComment(createCommentInput: CreateCommentInput!): CommentEntity!
-  updateComment(updateCommentInput: UpdateCommentInput!): CommentEntity!
-  removeComment(id: Int!): CommentEntity!
-  createLike(createLikeInput: CreateLikeInput!): Like!
-  updateLike(updateLikeInput: UpdateLikeInput!): Like!
-  removeLike(id: Int!): Like!
 }
 
 input CreateUserInput {
-  """
-  Example field (placeholder)
-  """
-  exampleField: Int!
-}
-
-input UpdateUserInput {
-  """
-  Example field (placeholder)
-  """
-  exampleField: Int
-  id: Int!
-}
-
-input CreateCommentInput {
-  """
-  Example field (placeholder)
-  """
-  exampleField: Int!
-}
-
-input UpdateCommentInput {
-  """
-  Example field (placeholder)
-  """
-  exampleField: Int
-  id: Int!
-}
-
-input CreateLikeInput {
-  """
-  Example field (placeholder)
-  """
-  exampleField: Int!
-}
-
-input UpdateLikeInput {
-  """
-  Example field (placeholder)
-  """
-  exampleField: Int
-  id: Int!
+  name: String!
+  password: String!
+  email: String!
+  bio: String
+  avatar: String
 }
