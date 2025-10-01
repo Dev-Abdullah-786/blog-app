@@ -51,12 +51,20 @@ type Post {
   _count: Count!
 }
 
+type AuthPayload {
+  id: Float!
+  name: String!
+  avatar: String
+  accessToken: String!
+}
+
 type Query {
   posts: [Post!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
+  signIn(signInInput: SignInInput!): AuthPayload!
 }
 
 input CreateUserInput {
@@ -65,4 +73,9 @@ input CreateUserInput {
   email: String!
   bio: String
   avatar: String
+}
+
+input SignInInput {
+  email: String!
+  password: String!
 }
