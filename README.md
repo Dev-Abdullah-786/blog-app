@@ -1,1 +1,1 @@
-  Blog APP (Nest.js, Next.js)
+Blog APP (Nest.js, Next.js)
