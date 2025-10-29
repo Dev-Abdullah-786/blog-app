@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { fetchPostById } from "@/lib/actions/postActions";
+import SanitizedContent from "./_components/SanitizedContent";
 
 type Props = {
   params: {
@@ -25,6 +26,8 @@ const PostPage = async ({ params }: Props) => {
           className="rounded-md object-cover"
         />
       </div>
+
+      <SanitizedContent content={post.content} />
     </main>
   );
 };
