@@ -7,7 +7,7 @@ import { CREATE_USER_MUTATION, SIGN_IN_MUTATION } from "../gqlQueries";
 import { redirect } from "next/navigation";
 import { LoginFormSchema } from "../zodSchemas/loginFormSchema";
 import { revalidatePath } from "next/cache";
-
+import { createSession } from "../session";
 export async function signUp(
   state: SignUpFormState,
   formData: FormData
@@ -62,6 +62,14 @@ export async function signIn(
       message: "Invalid Credentials",
     };
   }
+  await createSession({
+    user: {
+      id: data.signIn.id,
+      name: data.signIn.name,
+      avatar: data.signIn.avatar,
+    },
+    accessToken: data.signIn.accessToken,
+  });
   revalidatePath("/");
   redirect("/");
 }
