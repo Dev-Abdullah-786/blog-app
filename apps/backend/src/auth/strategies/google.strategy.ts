@@ -1,26 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
-import { Strategy, VerifyCallback } from 'passport-google-oauth20';
+import { Strategy, Profile, VerifyCallback } from 'passport-google-oauth20';
 import { AuthService } from '../auth.service';
 
-// Define a strict interface for Google profile data
-interface GoogleProfile {
-  emails: { value: string }[];
-  photos?: { value: string }[];
-  displayName?: string;
-}
-
 @Injectable()
-export class GoogleStrategy extends PassportStrategy(Strategy) {
+export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   constructor(
-    private configService: ConfigService,
+    private readonly configService: ConfigService,
     private readonly authService: AuthService,
   ) {
     super({
-      clientID: configService.get<string>('GOOGLE_CLIENT_ID'),
-      clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET'),
-      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL'),
+      clientID: configService.get<string>('GOOGLE_CLIENT_ID')!,
+      clientSecret: configService.get<string>('GOOGLE_CLIENT_SECRET')!,
+      callbackURL: configService.get<string>('GOOGLE_CALLBACK_URL')!,
       scope: ['email', 'profile'],
     });
   }
@@ -28,17 +21,17 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
   async validate(
     accessToken: string,
     refreshToken: string,
-    profile: GoogleProfile,
+    profile: Profile,
     done: VerifyCallback,
-  ) {
+  ): Promise<void> {
     const email = profile.emails?.[0]?.value;
     const avatar = profile.photos?.[0]?.value ?? '';
     const name = profile.displayName ?? '';
 
     if (!email) {
-      done(new Error('No email found in Google profile'), null);
-      return;
+      return done(new Error('No email found in Google profile'), undefined);
     }
+
     const user = await this.authService.validateGoogleUser({
       email,
       name,
@@ -46,6 +39,6 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
       password: '',
     });
 
-    done(null, user);
+    return done(null, user);
   }
 }
